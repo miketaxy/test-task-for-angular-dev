@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,6 +14,9 @@ import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { MainPageModule } from './main-page/main-page.module';
+import { NotFoundInterceptor } from './@shared/interceptor/not-found-interceptor/not-found.interceptor';
+import { UsernamePipe } from './@shared/pipes/username.pipe';
 
 @NgModule({
   imports: [
@@ -28,10 +31,11 @@ import { AppRoutingModule } from './app-routing.module';
     ShellModule,
     HomeModule,
     AuthModule,
+    MainPageModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
-  declarations: [AppComponent],
-  providers: [],
+  declarations: [AppComponent, UsernamePipe],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: NotFoundInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

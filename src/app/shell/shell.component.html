@@ -1,2 +1,8 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div class="d-flex flex-column">
+  <app-header></app-header>
+  <div style="min-height: var(--container-min-height)">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-footer></app-footer>
+</div>

@@ -15,3 +15,25 @@
 
 // Theme customization
 @import "theme/theme";
+
+// Сonst component variables
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+$spacer: 1rem;
+
+:root {
+  --header-height: 56px;
+  --header-bottom-margin: 16px;
+  --header-total-height: calc(var(--header-height) + var(--header-bottom-margin));
+  --footer-total-height: 57.6px;
+  --container-min-height: calc(100vh - var(--header-total-height) - var(--footer-total-height));
+  --container-padding-x: calc(#{$spacer} * 12);
+  --service-box-gap: 30px;
+  --margin-header-footer: 40px;
+  --box-size: 150px;
+}

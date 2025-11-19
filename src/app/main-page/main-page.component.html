@@ -1,0 +1,43 @@
+<div id="container">
+  <div class="w-100 d-flex justify-content-center align-items-center" id="container__intro">
+    <div class="w-50">
+      <h2>Intro</h2>
+      <p class="text-left">
+        Some introduction <br />
+        lines about the <br />
+        website or company
+      </p>
+    </div>
+    <div class="h-50 w-50 bg-dark"></div>
+  </div>
+  <hr />
+  <div id="container__services">
+    <div *ngFor="let box of serviceBoxItem">
+      <app-service-box [item]="box">Services</app-service-box>
+    </div>
+    <div id="container__services__twitter-feed">
+      <div style="height: var(--box-size)" class="border align-items-center d-flex"><h2>Twitter Feed</h2></div>
+    </div>
+  </div>
+  <section id="container__weather">
+    <h3 id="container__weather__title">Weather in {{ weatherData.name }}</h3>
+    <div id="container__weather__data">
+      <div id="container__weather__item">
+        <span id="container__weather__label">Temperature:</span>
+        <span id="container__weather__value">{{ weatherData.main.temp }}°K</span>
+      </div>
+      <div id="container__weather__item">
+        <span id="container__weather__label">Description:</span>
+        <span id="container__weather__value">{{ weatherData.weather[0].description }}</span>
+      </div>
+      <div id="container__weather__item">
+        <span id="container__weather__label">Humidity:</span>
+        <span id="container__weather__value">{{ weatherData.main.humidity }}%</span>
+      </div>
+      <div id="container__weather__item">
+        <span id="container__weather__label">Wind Speed:</span>
+        <span id="container__weather__value">{{ weatherData.wind.speed }} m/s</span>
+      </div>
+    </div>
+  </section>
+</div>
